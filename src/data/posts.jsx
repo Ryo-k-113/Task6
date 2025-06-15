@@ -1,4 +1,3 @@
-// /src/data/posts.jsx
 export const posts = [
   {
     id: 1,
