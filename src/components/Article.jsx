@@ -21,7 +21,7 @@ export const Article = () => {
             <div className="flex gap-x-2 items-center">
               {articleDetail.categories.map((category) => {
                 return(
-                  <p className="category text-sm text-fuchsia-600 border-1 rounded-sm p-1">{category}</p>
+                  <p key={category} className="category text-sm text-fuchsia-600 border-1 rounded-sm p-1">{category}</p>
                 );
               })}
             </div>
