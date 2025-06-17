@@ -1,14 +1,19 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css'
 import { Header } from './components/Header'
-import { Main } from './components/Main.JSX'
+import { Main } from './components/Main'
+import { Article } from './components/Article'
 
 export const App = () => {
-
   return (
     <>
-      <Header />
-      <Main />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/article/:id" element={<Article />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
-
