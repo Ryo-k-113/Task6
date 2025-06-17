@@ -9,13 +9,13 @@ export const Main = () => {
         {posts.map(post =>  {
           return(
             <li key={post.id} className="postList border-1 border-gray-300 mt-10 pl-4 pr-12 py-4">
-              <Link to={`/article/${post.id}`}> 
+              <Link to={`/articles/${post.id}`}> 
                 <div className="flex justify-between">
                   <p className="postDate text-gray-500 text-xs">{new Date(post.createdAt).toLocaleDateString()}</p>
                   <div className="flex gap-x-2 items-center">
                     {post.categories.map((category) => {
                       return(
-                        <p className="category text-sm text-fuchsia-600 border-1 rounded-sm p-1">{category}</p>
+                        <p key={category} className="category text-sm text-fuchsia-600 border-1 rounded-sm p-1">{category}</p>
                       );
                     })}
                   </div>
