@@ -7,16 +7,22 @@ const postListUrl = "https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com
 
 export const Main = () => {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetcher = async () => {
       const res = await fetch(postListUrl)
       const { posts } = await res.json()
       setPosts(posts)
+      setLoading(false)
     }
 
     fetcher()
   }, [])
+
+  if(loading){
+    return <div>読み込み中...</div>;
+  } 
 
   return (
     <main className="w-3xl mx-auto">
