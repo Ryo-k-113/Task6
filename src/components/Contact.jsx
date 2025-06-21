@@ -55,21 +55,27 @@ export const Contact = () => {
     e.preventDefault();  //ページリロードを防ぐ
 
     if (!valid()) return;
-
+  
     setDisable(true);  //送信中のフォーム操作を不可に
 
-    await fetch("https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/contacts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ name, email, message })
-    });
+    try {
+      await fetch("https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/contacts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, email, message })
+      });
+      alert('送信しました。')
 
-    alert('送信しました。')
+    } catch (e) {
+      console.error("エラー：", e.message)
+      alert('送信に失敗しました')
 
-    handleClear()  //フォームのクリア
-    setDisable(false)  //フォーム操作を可に
+    } finally {
+      handleClear()  //フォームのクリア
+      setDisable(false)  //フォーム操作を可に
+    }
   };
 
   //フォームのクリア 
