@@ -67,13 +67,13 @@ export const Contact = () => {
         body: JSON.stringify({ name, email, message })
       });
       alert('送信しました。')
+      handleClear()  //フォームのクリア
 
     } catch (e) {
       console.error("エラー：", e.message)
       alert('送信に失敗しました')
 
     } finally {
-      handleClear()  //フォームのクリア
       setDisable(false)  //フォーム操作を可に
     }
   };
